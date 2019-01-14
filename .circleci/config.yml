@@ -1,33 +1,34 @@
 version: 2.1
 
-orbs:
-    aws-s3: circleci/aws-s3@1.0.0 #imports the s3 orb in the circleci namespace
-
 jobs:
   build:
     docker:
-      - image: circleci/node:10.15.0-browsers
+      - image: buildpack-deps:trust
     steps:
-      - checkout
-      - restore_cache:
-          key: ci2s3-{{ .Branch }}-{{ checksum "package-lock.json" }}
-      - run: npm install
-      - save_cache:
-          key: ci2s3-{{ .Branch }}-{{ checksum "package-lock.json" }}
-          paths:
-            - "node_modules"
-      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-      - run: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
-      - run: npm run build -- --prod
-      - run:
-          name: Install pip
-          working_directory: /
-          command: |
-            sudo apt-get -y -qq update
-            sudo apt-get -y -qq install python3.4-dev
-            sudo curl -O https://bootstrap.pypa.io/get-pip.py
-            sudo python3.4 get-pip.py --user
-            sudo pip install awscli --upgrade --user
-      - aws-s3/sync: #invokes the sync command declared in the s3 orb
-          from: ./dist
-          to: "s3:${S3_BUCKET}"
+      - run: npm -v
+      - run: node -v
+      - run: python -V
+      - run: pip -V
+#
+# orbs:
+#     aws-s3: circleci/aws-s3@1.0.0 #imports the s3 orb in the circleci namespace
+#
+# jobs:
+#   build:
+#     docker:
+#       - image: circleci/node:10.15.0-browsers
+#     steps:
+#       - checkout
+#       - restore_cache:
+#           key: ci2s3-{{ .Branch }}-{{ checksum "package-lock.json" }}
+#       - run: npm install
+#       - save_cache:
+#           key: ci2s3-{{ .Branch }}-{{ checksum "package-lock.json" }}
+#           paths:
+#             - "node_modules"
+#       - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+#       - run: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+#       - run: npm run build -- --prod
+#       - aws-s3/sync: #invokes the sync command declared in the s3 orb
+#           from: ./dist
+#           to: "s3:${S3_BUCKET}"
