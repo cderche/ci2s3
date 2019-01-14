@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.15.0-browsers
-      - image: circleci/python:3.6.1
+      - image: circleci/python:2.7-jessie
     steps:
       - checkout
       - restore_cache:
