@@ -13,7 +13,7 @@ jobs:
       - checkout
       - run:
           name: Install node-sass
-          command: npm install -g node-sass --force
+          command: sudo npm install --unsafe-perm -g --force node-sass
       - run:
           name: Install app dependencies
           command: sudo npm install
