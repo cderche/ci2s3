@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Download angular cli
-          command: npm install -g @angular/cli
+          command: sudo npm install -g @angular/cli
       - run:
           name: Build application for production
           command: ng build --prod
