@@ -12,11 +12,11 @@ jobs:
           command: ng version
       - checkout
       - run:
-          name: Install node-sass
-          command: sudo npm install --unsafe-perm -g --force node-sass
-      - run:
           name: Install app dependencies
           command: sudo npm install
+      - run:
+          name: Install node-sass
+          command: sudo npm install --save --unsafe-perm --force node-sass
       - run:
           name: Build app
           command: ng build --prod
