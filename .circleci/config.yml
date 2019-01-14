@@ -16,4 +16,4 @@ jobs:
           command: sudo npm install
       - run:
           name: Build app
-          command: ng build
+          command: ng build --prod
