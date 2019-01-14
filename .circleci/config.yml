@@ -2,13 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10.15.0
+      - image: circleci/node:10.15.0-browsers
     steps:
       - checkout
-      - run: ls
-      # - run:
-      #     name: Install angular cli
-      #     command: sudo npm install -g @angular/cli
-      # - run:
-      #     name: Version of angular
-      #     command: ng version
+      - run:
+          name: Install angular cli
+          command: sudo npm install -g @angular/cli
+      - run:
+          name: Version of angular
+          command: ng version
