@@ -23,11 +23,11 @@ jobs:
           name: Install pip
           working_directory: /
           command: |
-            apt-get -y -qq update
-            apt-get -y -qq install python3.4-dev
-            curl -O https://bootstrap.pypa.io/get-pip.py
-            python3.4 get-pip.py --user
-            pip install awscli --upgrade --user
+            sudo apt-get -y -qq update
+            sudo apt-get -y -qq install python3.4-dev
+            sudo curl -O https://bootstrap.pypa.io/get-pip.py
+            sudo python3.4 get-pip.py --user
+            sudo pip install awscli --upgrade --user
       - aws-s3/sync: #invokes the sync command declared in the s3 orb
           from: ./dist
           to: "s3:${S3_BUCKET}"
