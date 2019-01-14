@@ -12,8 +12,8 @@ jobs:
           command: ng version
       - checkout
       - run:
-          name: Rebuild node-sass
-          command: sudo npm rebuild node-sass --force
+          name: Install node-sass
+          command: npm install -g node-sass --force
       - run:
           name: Install app dependencies
           command: sudo npm install
