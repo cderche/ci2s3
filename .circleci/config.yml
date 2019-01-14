@@ -1,42 +1,23 @@
-version: 2.1
-commands:
-  setup:
-    description: "Sets the environment up"
-    steps:
-      steps:
-        - run:
-            name: Install angular cli
-            command: sudo npm install -g @angular/cli
-        - run:
-            name: List angular package versions
-            command: ng version
-        - checkout
-        - run:
-            name: Install app dependencies
-            command: sudo npm install
-        - run:
-            name: Install node-sass
-            command: sudo npm install --save --unsafe-perm --force node-sass
+version: 2
 jobs:
-  test:
+  build:
     docker:
       - image: circleci/node:10.15.0-browsers
     steps:
-      - setup
+      - run:
+          name: Install angular cli
+          command: sudo npm install -g @angular/cli
+      - run:
+          name: List angular package versions
+          command: ng version
+      - checkout
+      - run:
+          name: Install app dependencies
+          command: sudo npm install
+      - run:
+          name: Install node-sass
+          command: sudo npm install --save --unsafe-perm --force node-sass
       - run: ng test
       - run: ng lint
       - run: ng e2e
-  deploy:
-    docker:
-      - image: circleci/node:10.15.0-browsers
-    requires:
-      - test
-    steps:
-      - setup
-      - ng build --prod
-workflows:
-  version: 2
-  workflow:
-    jobs:
-      - test
-      - deploy
+      - run: ng build --prod
