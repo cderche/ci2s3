@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.15.0
+    steps:
+      - checkout
+      - run:
+          name: Download angular cli
+          command: npm install -g @angular/cli
+      - run:
+          name: Build application for production
+          command: ng build --prod
