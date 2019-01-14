@@ -15,5 +15,8 @@ jobs:
           name: Install app dependencies
           command: sudo npm install
       - run:
+          name: rebuild node-sass
+          command: npm rebuild node-sass
+      - run:
           name: Build app
           command: ng build --prod
