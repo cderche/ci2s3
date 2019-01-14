@@ -10,13 +10,13 @@ jobs:
       - run:
           name: List angular package versions
           command: ng version
-      - checkout
-      - run:
-          name: Install app dependencies
-          command: sudo npm install
       - run:
           name: install node-sass
           command: sudo npm install -g --unsafe-perm node-sass
+      - checkoutd
+      - run:
+          name: Install app dependencies
+          command: sudo npm install
       - run:
           name: Build app
           command: ng build --prod
