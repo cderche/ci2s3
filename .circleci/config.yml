@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: sudo npm install
+          command: sudo npm install -g --unsafe-perm
       - run:
           name: Version of angular
           command: ng version
