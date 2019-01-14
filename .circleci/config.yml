@@ -13,7 +13,10 @@ jobs:
       - checkout
       - run:
           name: Install app dependencies
-          command: sudo npm install --force
+          command: sudo npm install
+      - run:
+          name: Rebuild node-sass
+          command: sudo npm rebuild node-sass --force
       - run:
           name: Build app
           command: ng build --prod
