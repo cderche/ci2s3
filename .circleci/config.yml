@@ -4,13 +4,10 @@ jobs:
     docker:
       - image: circleci/node:10.15.0
     steps:
-      - run:
-          name: Update npm
-          command: npm update
+      - checkout
       - run:
           name: Install angular cli
           command: sudo npm install -g @angular/cli
-      - checkout
       - run:
-          name: Build application for production
-          command: ng build --prod
+          name: Version of angular
+          command: ng version
