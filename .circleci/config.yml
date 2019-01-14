@@ -10,8 +10,8 @@ jobs:
       - run:
           name: List angular package versions
           command: ng version
+      - run: npm config get production
       - checkout
       - run:
           name: Build app
           command: ng build
-      - run: npm config get production
