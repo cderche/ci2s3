@@ -8,8 +8,9 @@ jobs:
           name: Install dependencies
           command: sudo npm install -g @angular/cli
       - run:
-          name: Version of angular
+          name: List angular package versions
           command: ng version
-      - run: pwd
-      - run: ls
-      # - checkout
+      - checkout
+      - run:
+          name: Build app
+          command: ng build
