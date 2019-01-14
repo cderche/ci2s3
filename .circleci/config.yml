@@ -4,13 +4,13 @@ jobs:
     docker:
       - image: circleci/node:10.15.0-browsers
     steps:
+      - checkout
       - run:
           name: Install dependencies
           command: sudo npm install
       - run:
           name: List angular package versions
           command: ng version
-      - checkout
       - run:
           name: Build app
           command: ng build
