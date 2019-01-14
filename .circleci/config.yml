@@ -13,10 +13,7 @@ jobs:
       - checkout
       - run:
           name: Install app dependencies
-          command: sudo npm install
-      - run:
-          name: install node-sass
-          command: sudo npm rebuild --unsafe-perm node-sass
+          command: sudo npm install --force
       - run:
           name: Build app
           command: ng build --prod
