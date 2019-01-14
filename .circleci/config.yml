@@ -5,9 +5,10 @@ jobs:
       - image: circleci/node:10.15.0
     steps:
       - checkout
-      - run:
-          name: Install angular cli
-          command: sudo npm install -g @angular/cli
-      - run:
-          name: Version of angular
-          command: ng version
+      - run: ls
+      # - run:
+      #     name: Install angular cli
+      #     command: sudo npm install -g @angular/cli
+      # - run:
+      #     name: Version of angular
+      #     command: ng version
