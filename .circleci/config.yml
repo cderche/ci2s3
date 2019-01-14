@@ -21,5 +21,11 @@ jobs:
           name: Build app
           command: ng build --prod
       - run:
-          name: Build app
+          name: Test app
           command: ng test
+      - run:
+          name: Lint app
+          command: ng lint
+      - run:
+          name: e2e app
+          command: ng e2e
