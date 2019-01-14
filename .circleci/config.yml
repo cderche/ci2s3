@@ -4,10 +4,10 @@ jobs:
     docker:
       - image: circleci/node:10.15.0
     steps:
+      - checkout
       - run:
           name: Install angular cli
-          command: sudo npm install -g @angular/cli
-      - checkout
+          command: sudo npm install -g @angular/cli @angular-devkit/build-angular
       - run:
           name: Build application for production
           command: ng build --prod
