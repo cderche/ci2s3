@@ -6,8 +6,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install angular cli
-          command: sudo npm install -g @angular/cli
+          name: Install dependencies
+          command: sudo npm install
       - run:
           name: Version of angular
           command: ng version
