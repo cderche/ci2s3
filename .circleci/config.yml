@@ -4,20 +4,13 @@ jobs:
     docker:
       - image: circleci/node:10.15.0-browsers
     steps:
-      - run:
-          name: Install angular cli
-          command: sudo npm install -g @angular/cli
-      - run:
-          name: List angular package versions
-          command: ng version
       - checkout
-      - run:
-          name: Install app dependencies
-          command: sudo npm install
-      - run:
-          name: Install node-sass
-          command: sudo npm install --save --unsafe-perm --force node-sass
-      - run: ng test
-      - run: ng lint
-      - run: ng e2e
-      - run: ng build --prod
+      - restore_cache:
+          key: ci2s3-{{ .Branch }}-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: ci2s3-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - "node_modules"
+      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
