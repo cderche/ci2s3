@@ -40,7 +40,7 @@ jobs:
           at: /home/circleci
       - aws-s3/sync: #invokes the sync command declared in the s3 orb
           from: ./dist
-          to: "s3:${S3_BUCKET}"
+          to: "s3://${S3_BUCKET}"
 
 workflows:
   version: 2.1
