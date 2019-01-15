@@ -19,7 +19,7 @@ jobs:
       - run: npm run build -- --prod
       - run: pwd
       - persist_to_workspace:
-          root: /
+          root: /home/circleci/project
           paths:
             - dist
 #   test:
