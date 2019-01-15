@@ -19,24 +19,24 @@ jobs:
       - run: npm run build -- --prod
       - persist_to_workspace:
           root: /
-  test:
-    docker:
-      - image: circleci/node:10.15.0-browsers
-    steps:
-      - attach_workspace:
-          at: /
-      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-      - run: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
-
-      # - aws-s3/sync: #invokes the sync command declared in the s3 orb
-      #     from: ./dist
-      #     to: "s3:${S3_BUCKET}"
-workflows:
-  version: 2.1
-
-  btd:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
+#   test:
+#     docker:
+#       - image: circleci/node:10.15.0-browsers
+#     steps:
+#       - attach_workspace:
+#           at: /
+#       - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+#       - run: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+#
+#       # - aws-s3/sync: #invokes the sync command declared in the s3 orb
+#       #     from: ./dist
+#       #     to: "s3:${S3_BUCKET}"
+# workflows:
+#   version: 2.1
+#
+#   btd:
+#     jobs:
+#       - build
+#       - test:
+#           requires:
+#             - build
