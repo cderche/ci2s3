@@ -17,7 +17,7 @@ jobs:
           paths:
             - "node_modules"
       - run: npm run build -- --prod
-      - run: cmd
+      - run: pwd
       - persist_to_workspace:
           root: /
           paths:
