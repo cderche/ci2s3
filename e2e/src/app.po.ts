@@ -8,4 +8,8 @@ export class AppPage {
   getTitleText() {
     return element(by.css('app-root h1')).getText();
   }
+
+  getLogoSrc() {
+    return element(by.css('app-root img')).getAttribute('src');
+  }
 }
