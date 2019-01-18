@@ -28,7 +28,7 @@ describe('workspace-project App', () => {
 
     browser.getCurrentUrl().then(url => {
       const domain = myTldjs.parse(url).domain
-      expect(page.getLogoSrc()).toEqual(`http://assets.dokspotapp.com.s3.amazonaws.com/${domain}/logo.png`);
+      expect(page.getLogoSrc()).toEqual(`https://assets.dokspotapp.com/${domain}/logo.png`);
     })
   })
 });

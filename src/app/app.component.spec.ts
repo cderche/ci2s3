@@ -39,7 +39,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
 
-    expect(app.logo_url).toEqual(`http://assets.dokspotapp.com.s3.amazonaws.com/${domain}/logo.png`);
+    expect(app.logo_url).toEqual(`https://assets.dokspotapp.com/${domain}/logo.png`);
   });
 
   it('should render title in a h1 tag', () => {
@@ -55,6 +55,6 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
 
-    expect(compiled.querySelector('img').src).toContain(`http://assets.dokspotapp.com.s3.amazonaws.com/${domain}/logo.png`);
+    expect(compiled.querySelector('img').src).toContain(`https://assets.dokspotapp.com/${domain}/logo.png`);
   });
 });

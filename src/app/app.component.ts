@@ -17,7 +17,7 @@ export class AppComponent {
 
   domain = myTldjs.parse(window.location.host).domain;
   title = this.domain;
-  logo_url = `http://assets.dokspotapp.com.s3.amazonaws.com/${this.domain}/logo.png`;
+  logo_url = `https://assets.dokspotapp.com/${this.domain}/logo.png`;
 
 
   constructor() {
